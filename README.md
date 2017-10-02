@@ -42,7 +42,7 @@ The notation is
 See Also
 --------
 
-The article discussing the results is on the (GitHub Pages site)\[<https://natgoodman.github.io/SWFDR>\] associated with this repository in (html)\[<https://natgoodman.github.io/SWFDR/swfdr.html>\] and (pdf)\[<https://natgoodman.github.io/SWFDR/swfdr.pdf>\]. It's also in the repository as files (swfdr.html)\[swfdr.html\] and (swfdr.pdf)\[swfdr.pdf\]. (Note that GitHub renders html files as raw text).
+The article discussing the results in [html](https://natgoodman.github.io/SWFDR/swfdr.html) and [pdf](https://natgoodman.github.io/SWFDR/swfdr.pdf) is on the [GitHub Pages site](https://natgoodman.github.io/SWFDR) associated with this repository. It's also in the repository as files [swfdr.html](swfdr.html) and [swfdr.pdf](swfdr.pdf). (But note that GitHub, unlike GitHub Pages, renders html files as raw text).
 
 Author
 ------
