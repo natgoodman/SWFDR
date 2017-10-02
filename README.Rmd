@@ -3,9 +3,10 @@ title: "Science-Wise False Discovery Rate"
 author: "Nathan (Nat) Goodman"
 date: "October 2, 2017"
 output:
-  pdf_document: default
   github_document:
     html_preview: no
+  html_document: default
+  pdf_document: default
 linkcolor: cyan
 citecolor: green
 urlcolor: blue
@@ -21,7 +22,7 @@ The SWFDR software reimplements the core idea in
 The *false discovery rate* (*FDR*) is the probability that a significant p-value indicates a false positive, or equivalently, the proportion of significant p-values that correspond to results without a real effect. The *science-wise false discovery rate* (*SWFDR*) is the probability that a significant p-value in the *published literature* is a false positive, or equivalently, the proportion of published significant results that are wrong. The scripts simulate a large number of problem instances and produce graphs of SWFDR for a range of parameter values. 
 
 ## Installation and Usage
-The simplest way to get the software is to download the script (swfdr.R)[https://github.com/natgoodman/SWFDR/blob/master/R/swfdr.R] from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation. 
+The simplest way to get the software is to download the script [swfdr.R](https://github.com/natgoodman/SWFDR/blob/master/R/swfdr.R) from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation. 
 
 The recommended way to run the script is to `source` it into your R session and run the statement `run();`  as shown below.
 
