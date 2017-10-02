@@ -1,27 +1,18 @@
 ---
 title: 'Science: Science-Wise False Discovery Rate'
 author: "Nathan (Nat) Goodman"
-date: "June 1, 2017"
+date: "October 2, 2017"
 output:
+  pdf_document: default
   html_document:
     css: css/html_document.css
     highlight: kate
-  pdf_document:
-    toc: yes
-    toc_depth: 3
 linkcolor: cyan
 citecolor: green
 urlcolor: blue
 ---
-```{r echo=FALSE,include=FALSE,cache=FALSE}
-## setup variables for documentation paths
-knitr::read_chunk('../tool/doclink.R');
-```
-```{r echo=FALSE,include=FALSE,cache=FALSE}
-<<doclink>>
-```
 
-*This document discusses scientific and statistical aspects of science-wise false discovery rate (SWFDR), based on the R programs in [my GitHub SWFDR repository](https://github.com/natgoodman/SWFDR). Please see the [README file](`r README`), the companion document [Software: Science-Wise False Discovery Rate](`r software`) and other documents listed in the [Documentation Index](`r docindex`) for information on the software.*
+*This article explores the statistical concept of science-wise false discovery rate (SWFDR). Some authors use SWFDR and its complement, positive predictive value, to argue that most (or, at least, many) published scientific results must be wrong unless most hypotheses are a priori true. I disagree. While SWFDR is valid statistically, the real cause of bad science is "Publish or Perish".*
 
 ## Introduction
 
@@ -39,14 +30,14 @@ Being a programmer and not a statistician, I decided to write some R code to exp
 
 The program simulates a large number of problem instances representing published results, some of which are true and some false. The instances are very simple: I generate two groups of random numbers and use the t-test to assess the difference between their means. One group (the control group or simply *group0*) comes from a standard normal distribution with $mean=0$. The other group (the treatment group or simply *group1*) is a little more involved:
 
-* for *true* instances, we take numbers from a standard normal distribution with mean *d* ($d>0$);
-* for *false* instances, we use the same distribution as *group0*.
+* for *true* instances, I take numbers from a standard normal distribution with mean *d* ($d>0$);
+* for *false* instances, I use the same distribution as *group0*.
 
 The parameter *d* is the effect size, aka *Cohen’s d*. 
 
 I use the t-test to compare the means of the groups and produce a p-value assessing whether both groups comes from the same distribution. 
 
-The program does this thousands of times (drawing different random numbers each time, of course), collects the resulting p-values, and computes the FDR. The program repeats the procedure for a range of assumptions to determine the conditions under which most published results are wrong.
+The program does this thousands of times (drawing different random numbers each time, of course), collects the resulting p-values, and computes the FDR. The program repeats the procedure for a range of assumptions to determine the conditions under which most positive results are wrong.
 
 For *true* instances, we expect the difference in means to be approximately *d* and for *false* ones to be approximately 0, but due to the vagaries of random sampling, this may not be so. If the actual difference in means is far from the expected value, the t-test may get it wrong, declaring a *false* instance to be positive and a *true* one to be negative. The goal is to see how often we get the wrong answer across a range of assumptions.
 
@@ -76,10 +67,10 @@ The simulation parameters are
 The simulation procedure with default parameters produces four graphs similar to the ones below. 
 
 ```{r out.width="50%",echo=FALSE,fig.show='asis'}
-knitr::include_graphics('../figure/swfdr_base/plot_byprop.png');
-knitr::include_graphics('../figure/swfdr_base/plot_byd.png');
-knitr::include_graphics('../figure/swfdr_base/plot_vsprop.png');
-knitr::include_graphics('../figure/swfdr_base/plot_vsd.png');
+knitr::include_graphics('figure/plot_byprop.png');
+knitr::include_graphics('figure/plot_byd.png');
+knitr::include_graphics('figure/plot_vsprop.png');
+knitr::include_graphics('figure/plot_vsd.png');
 ```
 
 In these graphs,
@@ -104,10 +95,10 @@ The third graph shows FDR vs. *prop.true* across a range of p-values for a singl
 
 The final graph shows FDR vs. *d* across a range of p-values for a single value of *prop.true* (0.5). As *d* drops below 1, FDR grows rapidly as we’ve seen before. Reducing the p-value helps, as you would expect. But even with p-value=.001, FDR grows rapidly for $d<0.5$, reaching about 0.2 for $d=0.25$. This is because power is abysmal (.004) at this point causing us to miss most true instances. This illustrates the tradeoff between false positives and false negatives as we reduce the p-value: smaller p-values give fewer false positives but also fewer true positives.
 
-Returning to the second graph above (FDR vs. p-value for a range of effect sizes and $prop.true=0.5$), we see that for small values of *d* and *pval*, the empirical results are noisy and don't match the theoretical results as well. This is because there aren’t enough positives in this region. Increasing the number of simulations to $10^6$ fixes the problem as shown in the graph below.
+Returning to the second graph above (FDR vs. p-value for a range of effect sizes and $prop.true=0.5$), we see that for small values of *d* and *pval*, the empirical results are noisy and don't match the theoretical results very well. This is because there aren’t enough positives in this region. Increasing the number of simulations to $10^6$ fixes the problem as shown in the graph below.
 
 ```{r out.width="50%",echo=FALSE,fig.show='asis'}
-## knitr::include_graphics('../figure/science01/plot_byd.m=1e6.png');
+knitr::include_graphics('figure/plot_byd.m=1e6.png');
 ```
 
 The relationship between FDR and p-value is complicated. If *prop.true* is 50% or better and *d* is 1 or more, p-values do a good job at discriminating true from false instances. Under less optimistic conditions, p-values are not so good. Under the most pessimistic conditions here, FDR is about 1/3. Reducing the significance level improves FDR but at the cost of missing more true instances.
@@ -149,7 +140,7 @@ I think this interpretation is dead-wrong. Hypotheses exist at many stages of re
 What happens to the incorrect hypotheses that make it to the near-publication stage? I see three possibilities:
 
 1. By (bad) luck, the study yielded a significant p-value and the happy but hapless investigators proceed to publication.
-2. The lab chief thinks the negative finding is correct and publishes the negative result or abandons the work. We all know this happens very rarely.
+2. The lab chief thinks the negative finding is correct and publishes the negative result or abandons the work. Sadly, this happens rarely, as we know too well.
 3. The lab chief is unconvinced and sends the student back to the lab for more experiments or to the computer for more analyses. This is p-hacking and will likely repeat until the student gets a positive result or the professor gives up.
 
 Ignoring the rare case #2, all false hypotheses that make it this far will eventually yield positive results and be published. This makes the work we’ve done simulating FDR totally irrelevant. The FDR we get will be close to whatever value we assume for the proportion of false hypotheses. In other words, $FDR \approx 1-prop.true$. Rather obvious, I think, and completely pointless.
@@ -158,4 +149,4 @@ I’ve seen plenty of bad science up close and personal and am thoroughly convin
 
 It's really just another consequence of "Publish or Perish".  Those who can, publish good science; those who can't, p-hack.  No amount of statistical cleverness can change this basic dynamic. If you replace the much-maligned p-value by some other statistic *s*, p-hackers will become s-hackers, and the overall quality of science will remain unchanged. 
 
-Good science drives the field forward; bad science is ephemeral. I know it's aggravating to see so much dreck get published, but it's even more aggravating to see good statisticians and data scientists agonizing over the ordure and wasting so much time and money trying to root out bad science. More good will be done by helping good scientists do good science than by trying to slow down the bad ones. You'll be happier, too! 
+Good science drives the field forward; bad science is ephemeral. I know it's aggravating to see so much dreck get published, but it's even more aggravating to see good statisticians and data scientists agonizing over the ordure and wasting so much time and money trying to root out bad science. More good will be done by helping good scientists do good science than by trying to slow down the bad ones. 

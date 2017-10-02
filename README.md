@@ -16,7 +16,7 @@ The *false discovery rate* (*FDR*) is the probability that a significant p-value
 Installation and Usage
 ----------------------
 
-The simplest way to get the software is to download the script `swfdr.R` from the `R` subdirectory of the [repository](https://github.com/natgoodman/SWFDR). The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation.
+The simplest way to get the software is to download the script (swfdr.R)\[<https://github.com/natgoodman/SWFDR/blob/master/R/swfdr.R>\] from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation.
 
 The recommended way to run the script is to `source` it into your R session and run the statement `run();` as shown below.
 
@@ -42,7 +42,7 @@ The notation is
 See Also
 --------
 
-The [article discussing the results](swfdr.pdf) is file `swfdr.pdf` in the repository.
+The article discussing the results is on the (GitHub Pages site)\[<https://natgoodman.github.io/SWFDR>\] associated with this repository in (html)\[<https://natgoodman.github.io/SWFDR/swfdr.html>\] and (pdf)\[<https://natgoodman.github.io/SWFDR/swfdr.pdf>\]. It's also in the repository as files (swfdr.html)\[swfdr.html\] and (swfdr.pdf)\[swfdr.pdf\]. (Note that GitHub renders html files as raw text).
 
 Author
 ------

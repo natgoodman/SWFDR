@@ -1,28 +1,18 @@
 ---
 title: "Science-Wise False Discovery Rate"
 author: "Nathan (Nat) Goodman"
-date: "June 1, 2017"
+date: "October 2, 2017"
 output:
-  pdf_document: default
-  html_document:
-    css: css/html_document.css
-    highlight: kate
   github_document:
     html_preview: no
+  pdf_document: default
 linkcolor: cyan
 citecolor: green
 urlcolor: blue
 ---
 <!-- README.md is generated from doc/README.Rmd. Please edit that file -->
-```{r echo=FALSE,include=FALSE,cache=FALSE}
-## setup variables for documentation paths
-knitr::read_chunk('tool/doclink.R');
-```
-```{r echo=FALSE,include=FALSE,cache=FALSE}
-<<doclink>>
-```
 
-*A collection of R scripts exploring the statistical concept of science-wise false discovery rate (SWFDR) and illustrating software design choices in R. The base script is `swfdr_base.R`, a simple implementation that uses base R capabilities only. [Exercises for the Reader](`r exercises`) offers ideas for improving the program. Other scripts in the distribution extend the base implementation by providing solutions to some of the exercises.*
+*An R script and short article exploring the statistical concept of science-wise false discovery rate (SWFDR). Some authors use SWFDR and its complement, positive predictive value, to argue that most (or, at least, many) published scientific results must be wrong unless most hypotheses are a priori true. I disagree. While SWFDR is valid statistically, the real cause of bad science is "Publish or Perish".*
 
 ## Overview
 The SWFDR software reimplements the core idea in 
@@ -31,35 +21,24 @@ The SWFDR software reimplements the core idea in
 The *false discovery rate* (*FDR*) is the probability that a significant p-value indicates a false positive, or equivalently, the proportion of significant p-values that correspond to results without a real effect. The *science-wise false discovery rate* (*SWFDR*) is the probability that a significant p-value in the *published literature* is a false positive, or equivalently, the proportion of published significant results that are wrong. The scripts simulate a large number of problem instances and produce graphs of SWFDR for a range of parameter values. 
 
 ## Installation and Usage
-The simplest way to get the software is to [download](https://github.com/natgoodman/FDR/archive/master.zip) the repository. You can also clone it using this URL: <https://github.com/natgoodman/FDR.git>.
+The simplest way to get the software is to download the script (swfdr.R)[https://github.com/natgoodman/SWFDR/blob/master/R/swfdr.R] from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation. 
 
-The software is in the `R` subdirectory. The scripts are
-
-1. `swfdr_base.R`. Simple, base implementation. 
-2. `swfdr_plot.R`. Improves the plotting functions in `swfdr_base.R` by consolidating duplicated code.
-3. `swfdr_pwr.R`. Produces better graphs than `swfdr_plot.R` when the user varies power directly, rather than indirectly via effect size. 
-4. `swfdr_notnorm.R`. Moves beyond normal distributions and the t-test. 
-5. `swfdr_interp.R`. Generalizes the interpolation scheme of the previous implementations to produce graphs of SWFDR across any parameters the user varies. This implementation requires the XXX package from CRAN.
-6. `swfdr_ggplot.R`. Uses ggplot2 instead of homebrew plotting code. Requires the ggplot2 package from CRAN.
-
-The first four scripts use base R capabilities only and will run "out of the box" on any (reasonably modern) R installation. 
-
-The recommended way to run a script, e.g. `swfdr_base.R`, is to `source` the program into your R session and run the statement `run();`  as shown below. You can also install the software and load it as a library as explained in the [companion document](`r paste(sep='',software,'#installation_and_usage')`)..
+The recommended way to run the script is to `source` it into your R session and run the statement `run();`  as shown below.
 
 ``` {r eval=FALSE}
 ## This code block assumes your working directory is the root of the distribution.
 
-source('R/swfdr_base.R');
+source('R/swfdr.R');
 run();
 ```
 
 This runs the program with default parameters producing four graphs similar to the ones below.  The default computation performs $2.5 \times 10^5$ simulations (taking about 3 minutes on my small Linux server).
 
 ```{r out.width="50%",echo=FALSE,fig.show='asis'}
-knitr::include_graphics('figure/swfdr_base/plot_byprop.png');
-knitr::include_graphics('figure/swfdr_base/plot_byd.png');
-knitr::include_graphics('figure/swfdr_base/plot_vsprop.png');
-knitr::include_graphics('figure/swfdr_base/plot_vsd.png');
+knitr::include_graphics('figure/plot_byprop.png');
+knitr::include_graphics('figure/plot_byd.png');
+knitr::include_graphics('figure/plot_vsprop.png');
+knitr::include_graphics('figure/plot_vsd.png');
 ```
 
 The notation is
@@ -72,14 +51,7 @@ The notation is
 
 ## See Also
 
-The full documentation is available online on [my GitHub Pages SWFDR site](https://natgoodman.github.io/SWFDR) and [my personal SWFDR website](http://hddrugworks.org/ngoodman/NewPro/SWFDR). Good starting points are
-
-- [Science: Science-Wise False Discovery Rate](`r science`) explains the scientific concepts underlying the software
-- [Software: Science-Wise False Discovery Rate](`r software`) discusses the software design and design choices
-- [Documentation Index](`r docindex`) has links to all documentation
-- [NEWS](`r NEWS`) lists the highlights of each release
-
-The `doc/` subdirectory tree of the distribution contains the documentation source files as well as output files suitable for viewing on your local computer.
+The article discussing the results is on the (GitHub Pages site)[https://natgoodman.github.io/SWFDR] associated with this repository in (html)[https://natgoodman.github.io/SWFDR/swfdr.html] and (pdf)[https://natgoodman.github.io/SWFDR/swfdr.pdf]. It's also in the repository as files (swfdr.html)[swfdr.html] and (swfdr.pdf)[swfdr.pdf]. (Note that GitHub renders html files as raw text).
 
 ## Author
 
@@ -88,8 +60,6 @@ Nathan (Nat) Goodman, (natg at shore.net)
 ## Bugs and Caveats
 
 Please report any bugs, other problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/SWFDR/issues). I will be notified, and you'll be apprised of progress.
-
-`swfdr_base.R` is pretty basic. See [Exercises for the Reader](`r exercises`) for a list of known limitations, and other scripts in the distribution for solutions to some of these problems.
 
 ## Copyright & License
 
