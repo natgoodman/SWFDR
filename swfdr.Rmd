@@ -1,5 +1,5 @@
 ---
-title: 'Science: Science-Wise False Discovery Rate'
+title: "Science-Wise False Discovery Rate Does Not Explain the Prevalence of Bad Science"
 author: "Nathan (Nat) Goodman"
 date: "October 2, 2017"
 output:
