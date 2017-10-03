@@ -3,9 +3,9 @@ title: "Science-Wise False Discovery Rate"
 author: "Nathan (Nat) Goodman"
 date: "October 2, 2017"
 output:
-  html_document: default
   github_document:
     html_preview: no
+  html_document: default
   pdf_document: default
 linkcolor: cyan
 citecolor: green
@@ -60,9 +60,9 @@ The user can change simulation parameters and control program operation by provi
 | sig.level | significance level for power calculations when *pwr* is set | `0.05` |
 | pval.plot | p-values for which we plot results | `c(.001,.01,.03,.05,.1)` |
 |  |  | |
-| scriptname | used to set output directories and in error messages |`'swfdr_base'` |
-| datadir | data directory relative to distribution root | `'data/swfdr_base'` |
-| figdir | figure directory relative to distribution root | `'figure/swfdr_base'` |
+| scriptname | used to set output directories and in error messages |`'swfdr'` |
+| datadir | data directory relative to distribution root | `'data'` |
+| figdir | figure directory relative to distribution root | `'figure'` |
 | save | save parameters, results, and plots; sets *save.rdata* and *save.plot*, not *save.txt* | `FALSE` |
 | save.rdata | save parameters and results in RData format | `FALSE` (set by *save*)|
 | save.txt | save results in txt format. **CAUTION: big and slow** | `FALSE` (not set by *save*) |

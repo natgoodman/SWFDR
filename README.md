@@ -96,17 +96,17 @@ The user can change simulation parameters and control program operation by provi
 <tr class="odd">
 <td>scriptname</td>
 <td>used to set output directories and in error messages</td>
-<td><code>'swfdr_base'</code></td>
+<td><code>'swfdr'</code></td>
 </tr>
 <tr class="even">
 <td>datadir</td>
 <td>data directory relative to distribution root</td>
-<td><code>'data/swfdr_base'</code></td>
+<td><code>'data'</code></td>
 </tr>
 <tr class="odd">
 <td>figdir</td>
 <td>figure directory relative to distribution root</td>
-<td><code>'figure/swfdr_base'</code></td>
+<td><code>'figure'</code></td>
 </tr>
 <tr class="even">
 <td>save</td>
