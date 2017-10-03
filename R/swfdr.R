@@ -1,13 +1,14 @@
 #################################################################################
 ##
 ## Author:  Nat Goodman
-## Created: 17-04-10
-##          from fdr.R created 17-04-03 from pval_error.R created 16-11-01
+## Created: 17-10-02
+##          from swfdr_base.R created 17-04-10
+##          from fdr.R created 17-04-03
+##          from pval_error.R created 16-11-01
 ##
 ## Copyright (C) 2017 Nat Goodman.
 ## 
-## NewPro example reimplementing the science-wise false discovery rate (SWFDR)
-## simulation from
+## Reimplements the science-wise false discovery rate (SWFDR) simulation from
 ## Colquhoun, D. (2014). An investigation of the false discovery rate
 ##   and the misinterpretation of P values. Royal Society Open Science,
 ##   1-15. http://doi.org/10.1098/rsos.140216
@@ -27,13 +28,11 @@ run=function(...) {
   init(...);                       # process parameters & other initialization
   doit();                          # do it! 
   saveit(save.rdata,save.txt);     # optionally save parameters and results
-  fini();                          # final cleanup if any
 }
-## ---- Initialize and Finalize ----
+## ---- init ----
 ## initialization.
 ## process parameters and store in global variables.
 ## create output directory if necessary.
-## in more complex examples, init might also open files and database connections
 init=function(
   ## simulation parameters 
   prop.true=seq(.1,.9,by=.2),    # fraction of cases where where there is a real effect
@@ -45,9 +44,9 @@ init=function(
   sig.level=0.05,                # for power calculations
   pval.plot=c(.001,.01,.03,.05,.1), # pvalues for which we plot results
   ## program parameters, eg, for output files, error messages, etc.
-  scriptname='swfdr_base',       #  
-  datadir=file.path('data',scriptname), # directory for data files
-  figdir=file.path('figure',scriptname), # directory for plots
+  scriptname='swfdr',            #  
+  datadir='data',                # directory for data files
+  figdir='figure',               # directory for plots
   ## program control
   save=F,                        # shorthand for save.rdata & save.plot 
   save.rdata=save,               # save params and results in RData format
@@ -103,12 +102,6 @@ doit=function() {
   dointerp();                      # interpolate at fixed pvals
   doplot(save.plot);               # plot results and optionally save plots 
 }
-## ---- fini ----
-## finalization.
-## end-of-run cleanup such as closing files and database connections.
-## nothing to do here but included for stylistic consistency
-fini=function() {}
-
 ## ---- Simulation Functions ----
 ## do the simulation
 dosim=function() {
@@ -125,7 +118,7 @@ sim_one=function(prop.true,m,n,d) {
   ## each group is matrix whose rows are cases and columns are samples
   ## group0 is control
   group0=replicate(m,rnorm(n,mean=0));
-  ## group1 contains num.false samples with effect=0, and num.true with effect=1
+  ## group1 contains num.false samples with effect=0, and num.true with effect=d
   num.true=round(m*prop.true);
   num.false=m-num.true;
   ## be careful when num.false or num.true is 0: replicate(0,...) produces empty list!
@@ -209,8 +202,9 @@ plot_byprop=function(save.plot=F,d1=1,sig.level=.05) {
 }
 ## plot fdr by d for one value of prop.true
 plot_byd=function(save.plot=F,prop.true1=0.5,sig.level=.05) {
-                                        # if desired value of d not in d, set to 1st value
-  if (!(prop.true1 %in% prop.true)) prop.true1=prop.true[1];
+                                        # if desired value of prop.true not in prop.true,
+                                        # set to 1st value
+  if (!(prop.true1 %in% cases$prop.true)) prop.true1=cases$prop.true[1];
   sim=sim[sim$prop.true==prop.true1,];  # select desired prop.true
   sim.byd=split(sim,sim$d);             # split into groups
   ## initialize plot
@@ -271,8 +265,9 @@ plot_vsprop=function(save.plot=F,d1=1,sig.level=.05) {
 }
 ## plot fdr vs d by fixed pvals for one value of prop.true
 plot_vsd=function(save.plot=F,prop.true1=0.5,sig.level=.05) {
-                                                # if desired value of d not in d, set to 1st value
-  if (!(prop.true1 %in% prop.true)) prop.true1=prop.true[1];
+                                        # if desired value of prop.true not in prop.true,
+                                        # set to 1st value
+  if (!(prop.true1 %in% cases$prop.true)) prop.true1=cases$prop.true[1];
   interp=interp[interp$prop.true==prop.true1,]; # select desired prop.true
   interp.bypval=split(interp,interp$pval);      # split into groups
   ## initialize plot
@@ -317,7 +312,9 @@ saveit=function(save.rdata=T,save.txt=F) {
   }
 }
 ## load saved parameters and results
-loadit=function(file='data/swfdr_base/globals.RData') {
+## CAUTION: when called in a fresh workspace, datadir variable not yet defined
+##          either set file explicitly or call init() first
+loadit=function(file=file.path(datadir,'globals.RData')) {
   if (!file.exists(file))
     stop(paste(sep=' ',"Cannot load saved parameters and results: file",file,"does not exist"));
   load(file=file,envir=.GlobalEnv);
@@ -339,8 +336,8 @@ fdr_empi=function(pval,d.true) {
   d.true=d.true[order];
   m=length(pval);
   neg=cumsum(ifelse(d.true,0,1));
-  fdr=neg/(1:m);        # because pval is sorted, index is number of entries with smaller pval
-                        # equals number of entries that would be accepted at this pval
+  fdr=neg/(1:m);        # because pval is sorted, index is number of instances with smaller pval
+                        # equals number of instances that would be accepted at this pval
   ## deal with ties if necessary
   if (anyDuplicated(pval)) {
     ## split fdr by pval, then set fdr to max fdr of group.
