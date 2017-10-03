@@ -35,7 +35,7 @@ The program simulates a large number of problem instances representing published
 
 The parameter *d* is the effect size, aka *Cohen’s d*. 
 
-I use the t-test to compare the means of the groups and produce a p-value assessing whether both groups comes from the same distribution. 
+I use the t-test to compare the means of the groups and produce a p-value assessing whether both groups come from the same distribution. 
 
 The program does this thousands of times (drawing different random numbers each time, of course), collects the resulting p-values, and computes the FDR. The program repeats the procedure for a range of assumptions to determine the conditions under which most positive results are wrong.
 
@@ -46,8 +46,8 @@ For *true* instances, we expect the difference in means to be approximately *d* 
 To reduce confusion, I will be obsessively consistent in my terminology.
 
 - An *instance* is a single run of the simulation procedure.
-- The terms *positive* and *negative* refer to the results of the t-test. A *positive instance* is one for which the t-test reports a significant p-value; a *negative instance* is the opposite. Obviously the distinction between positive and negative rests on the chosen significance level.
-- *true* and *false* refer to the correct answers. A *true instance* is one where the treatment group (*group1*) is drawn from a distribution with $mean=d$ ($d>0$). A *false instance* is the opposite: an instance drawn from a distribution with $mean=0$.
+- The terms *positive* and *negative* refer to the results of the t-test. A *positive instance* is one for which the t-test reports a significant p-value; a *negative instance* is the opposite. Obviously the distinction between positive and negative depends on the chosen significance level.
+- *true* and *false* refer to the correct answers. A *true instance* is one where the treatment group (*group1*) is drawn from a distribution with $mean=d$ ($d>0$). A *false instance* is the opposite: an instance where *group1* is drawn from a distribution with $mean=0$.
 - *empirical* refers to results calculated from the simulated data, as opposed to *theoretical* which means results calculated using standard formulas.
 
 The simulation parameters are
@@ -78,10 +78,10 @@ In these graphs,
 -  solid lines show theoretical results; dashed lines are empirical results from the simulation
 -  *fdr*. false discovery rate
 -  *pval*. p-value cutoff for significance
--  *prop.true*. proportion of simulated cases that have a real effect
+-  *prop.true*. proportion of true instances, i.e., ones that have a real effect
 -  *d*. standardized effect size, aka *Cohen's d*
 
-The first graph shows FDR vs. p-value across a range of *prop.true* values for a single effect size ($d=1$). Note the difference in *x* (p-value) and *y* (FDR) scales; the p-value scale is roughly an order of magnitude smaller than FDR. For this effect size, FDR behaves pretty well: for $prop.true=0.5$, FDR and p-value are pretty close; as *prop.true* gets smaller, FDR becomes larger than p-value; as *prop.true* gets larger, FDR shrinks below p-value. In other words, for this effect size, if most cases are true, p-values do a good job of separating the wheat from the chaff, but if most are false, p-values are less helpful. In the worse case plotted here, FDR is about 0.36 when $pval=0.05$.
+The first graph shows FDR vs. p-value across a range of *prop.true* values for a single effect size ($d=1$). Note the difference in *x* (p-value) and *y* (FDR) scales; the p-value scale is roughly an order of magnitude smaller than FDR. For this effect size, FDR behaves pretty well: for $prop.true=0.5$, FDR and p-value are pretty close; as *prop.true* gets smaller, FDR becomes larger than p-value; as *prop.true* gets larger, FDR shrinks below p-value. In other words, for this effect size, if most instances are true, p-values do a good job of separating the wheat from the chaff, but if most are false, p-values are less helpful. In the worse case plotted here, FDR is about 0.36 when $pval=0.05$.
 
 The second graph shows FDR vs. p-value across a range of effect sizes for a single value of *prop.true* (0.5). Again note the difference in scales. Recall that FDR behaves pretty well for this value of *prop.true* when $d=1$. It’s still reasonable for $d=0.75$. But for smaller effect sizes, FDR again grows to be much larger than p-value. In the worse case plotted here, FDR is about 0.33 when $pval=0.05$.
 
@@ -127,7 +127,7 @@ The best case is great (FDR=0.02), the worst case is horrible (0.43), and the in
 
 ## Discussion
 
-I started with the question, “Is science broken?” and segued to the more specific question of “Are most (or, at least many) published results wrong?” Do the results here support these claims?
+I started with the question, “Is science broken?” and segued to the more specific question of “Are most (or, at least many) published results wrong?”  I then reported the claim that "Yes, most (or many) results must be wrong unless most hypotheses are *a priori* true", because the science-wise false discovery rate (SWFDR) makes it so. Do the results here support the claim?
 
 It depends on *prop.true*, so we’d better be clear about what it represents.
 
@@ -139,7 +139,7 @@ I think this interpretation is dead-wrong. Hypotheses exist at many stages of re
 
 What happens to the incorrect hypotheses that make it to the near-publication stage? I see three possibilities:
 
-1. By (bad) luck, the study yielded a significant p-value and the happy but hapless investigators proceed to publication.
+1. By (bad) luck, the study yielded a significant p-value, and the happy but hapless investigators proceed to publication.
 2. The lab chief thinks the negative finding is correct and publishes the negative result or abandons the work. Sadly, this happens rarely, as we know too well.
 3. The lab chief is unconvinced and sends the student back to the lab for more experiments or to the computer for more analyses. This is p-hacking and will likely repeat until the student gets a positive result or the professor gives up.
 
@@ -149,4 +149,4 @@ I’ve seen plenty of bad science up close and personal and am thoroughly convin
 
 It's really just another consequence of "Publish or Perish".  Those who can, publish good science; those who can't, p-hack.  No amount of statistical cleverness can change this basic dynamic. If you replace the much-maligned p-value by some other statistic *s*, p-hackers will become s-hackers, and the overall quality of science will remain unchanged. 
 
-Good science drives the field forward; bad science is ephemeral. I know it's aggravating to see so much dreck get published, but it's even more aggravating to see good statisticians and data scientists agonizing over the ordure and wasting so much time and money trying to root out bad science. More good will be done by helping good scientists do good science than by trying to slow down the bad ones. 
+Good science drives the field forward; bad science is ephemeral. I know it's aggravating to see so much dreck get published, but it's even more aggravating to see good statisticians and data scientists agonizing over the ordure and spending so much effort trying to root out bad science. We will do more good by helping good scientists do good science than by trying to slow down the bad ones. Quoting the sage Oprah Winfrey (on [BrainyQuote](https://www.brainyquote.com/citation/quotes/quotes/o/oprahwinfr163087.html)), "Be thankful for what you have; you'll end up having more. If you concentrate on what you don't have, you will never, ever have enough." 
