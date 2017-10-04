@@ -1,15 +1,13 @@
-NEWS: Science-Wise False Discovery Rate
+Revision history for swfdr repository
 ================
 Nathan (Nat) Goodman
-October 2, 2017
+October 4, 2017
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
-*Revision history for SWFDR repository*
-
-release 0.90 2017-02-DD
+Release 0.90 2017-02-04
 -----------------------
 
-First version
+First version. Ready for feedback from external readers.
 
 Copyright & License
 -------------------
