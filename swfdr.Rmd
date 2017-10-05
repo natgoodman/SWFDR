@@ -3,10 +3,10 @@ title: "Science-Wise False Discovery Rate Does Not Explain the Prevalence of Bad
 author: "Nathan (Nat) Goodman"
 date: "October 2, 2017"
 output:
-  pdf_document: default
   html_document:
     css: css/html_document.css
     highlight: kate
+  pdf_document: default
 linkcolor: cyan
 citecolor: green
 urlcolor: blue
@@ -106,7 +106,7 @@ The relationship between FDR and p-value is complicated. If *prop.true* is 50% o
 Let’s look at extreme cases of *prop.true* (0.25, 0.75) and power (0.2, 0.8) for *pval=.05*.  The table below shows theoretical FDR for these cases.
 
 ```{r eval=FALSE,include=FALSE}
-source("script/swfdr_base.R");
+source("script/swfdr.R");
 init(prop.true=c(.25,.75),pwr=c(.2,.8),pval.interp=.05)
 dosim();
 dointerp();

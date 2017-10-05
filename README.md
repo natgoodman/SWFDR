@@ -14,7 +14,7 @@ The `swfdr.R` script reimplements the core idea in [David Colquhoun's fascinatin
 Installation and Usage
 ----------------------
 
-The simplest way to get the software is to download the script [`swfdr.R`](https://github.com/natgoodman/SWFDR/blob/master/R/swfdr.R) from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation.
+The simplest way to get the software is to download the script [`swfdr.R`](https://github.com/natgoodman/swfdr/blob/master/R/swfdr.R) from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation.
 
 The recommended way to run the script is to `source` it into your R session and run the statement `run();` as shown below.
 
@@ -149,7 +149,7 @@ The user can change simulation parameters and control program operation by provi
 ``` r
 ## this code block assumes your working directory is the root of the repository
 
-source("script/swfdr_base.R");
+source("script/swfdr.R");
 
 ## run default process and save results in directories data/guide01 and figure/guide01
 run(save=T,datadir='data/example01',figdir='figure/example01');
@@ -173,7 +173,7 @@ with(subset(sim,subset=(d==0.25&d.true&pval<=0.05)),hist(diff-d));
 See Also
 --------
 
-The article discussing the results is available in [html](https://natgoodman.github.io/SWFDR/swfdr.html) and [pdf](https://natgoodman.github.io/SWFDR/swfdr.pdf) formats on the [GitHub Pages site](https://natgoodman.github.io/SWFDR) associated with this repository. It's also in the repository as files [swfdr.html](swfdr.html) and [swfdr.pdf](swfdr.pdf). (But note that GitHub, unlike GitHub Pages, renders html files as raw text).
+The article discussing the results is available in [html](https://natgoodman.github.io/swfdr/swfdr.html) and [pdf](https://natgoodman.github.io/swfdr/swfdr.pdf) formats on the [GitHub Pages site](https://natgoodman.github.io/swfdr) associated with this repository. It's also in the repository as files [swfdr.html](swfdr.html) and [swfdr.pdf](swfdr.pdf). (But note that GitHub, unlike GitHub Pages, renders html files as raw text).
 
 Author
 ------
@@ -183,7 +183,7 @@ Nathan (Nat) Goodman, (natg at shore.net)
 Bugs and Caveats
 ----------------
 
-Please report any bugs, other problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/SWFDR/issues). I will be notified, and you'll be apprised of progress.
+Please report any bugs, other problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/swfdr/issues). I will be notified, and you'll be apprised of progress.
 
 Copyright & License
 -------------------
