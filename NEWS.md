@@ -4,7 +4,7 @@ Nathan (Nat) Goodman
 October 4, 2017
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
-Release 0.90 2017-02-04
+Release 0.90 2017-10-04
 -----------------------
 
 First version. Ready for feedback from external readers.
