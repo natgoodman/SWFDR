@@ -1,7 +1,7 @@
 ---
 title: "Science-Wise False Discovery Rate Does Not Explain the Prevalence of Bad Science"
 author: "Nathan (Nat) Goodman"
-date: "October 2, 2017"
+date: "October 16, 2017"
 output:
   pdf_document: default
   html_document:

@@ -1,7 +1,7 @@
 Science-Wise False Discovery Rate
 ================
 Nathan (Nat) Goodman
-October 2, 2017
+October 16, 2017
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 *An R script and short article exploring the statistical concept of science-wise false discovery rate (SWFDR). Some authors use SWFDR and its complement, positive predictive value, to argue that most (or, at least, many) published scientific results must be wrong unless most hypotheses are a priori true. I disagree. While SWFDR is valid statistically, the real cause of bad science is "Publish or Perish".*
@@ -173,7 +173,7 @@ with(subset(sim,subset=(d==0.25&d.true&pval<=0.05)),hist(diff-d));
 See Also
 --------
 
-The article discussing the results is available in [html](https://natgoodman.github.io/swfdr/swfdr.html) and [pdf](https://natgoodman.github.io/swfdr/swfdr.pdf) formats on the [GitHub Pages site](https://natgoodman.github.io/swfdr) associated with this repository. It's also in the repository as files [swfdr.html](swfdr.html) and [swfdr.pdf](swfdr.pdf). (But note that GitHub, unlike GitHub Pages, renders html files as raw text).
+The article discussing the results is available in [html](https://natgoodman.github.io/swfdr/swfdr.stable.html) and [pdf](https://natgoodman.github.io/swfdr/swfdr.stable.pdf) formats on the [GitHub Pages site](https://natgoodman.github.io/swfdr) associated with this repository. It's also in the repository as files [swfdr.stable.html](swfdr.stable.html) and [swfdr.stable.pdf](swfdr.stable.pdf). (But note that GitHub, unlike GitHub Pages, renders html files as raw text).
 
 Author
 ------
