@@ -4,8 +4,13 @@ Nathan (Nat) Goodman
 October 16, 2017
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
-Release 1.00 2017-10-16 (not yet released)
-------------------------------------------
+Release 1.01 2018-09-03
+-----------------------
+
+Added words on posting comments using GitHub Issue Tracker
+
+Release 1.00 2017-10-16
+-----------------------
 
 ### Revise documents per comments of external readers
 
