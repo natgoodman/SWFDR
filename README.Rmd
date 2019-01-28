@@ -4,7 +4,6 @@ author: "Nathan (Nat) Goodman"
 date: "October 16, 2017"
 output:
   pdf_document: default
-  html_document: default
   github_document:
     html_preview: no
 linkcolor: cyan
@@ -15,11 +14,15 @@ urlcolor: blue
 
 *An R script and short article exploring the statistical concept of science-wise false discovery rate (SWFDR). Some authors use SWFDR and its complement, positive predictive value, to argue that most (or, at least, many) published scientific results must be wrong unless most hypotheses are a priori true. I disagree. While SWFDR is valid statistically, the real cause of bad science is "Publish or Perish".*
 
+**THE SOFTWARE IS STILL ROUGH and SOFTWARE DOCUMENTATION NONEXISTENT. PLEASE GET IN TOUCH IF YOU NEED HELP**
+
 ## Overview
+
 The `swfdr.R` script reimplements the core idea in 
 [David Colquhoun's fascinating paper](http://rsos.royalsocietypublishing.org/content/1/3/140216), "An investigation of the false discovery rate and the misinterpretation of p-values" and further discussed in [Felix Schönbrodt's blog post](http://www.nicebread.de/whats-the-probability-that-a-significant-p-value-indicates-a-true-effect/), "What’s the probability that a significant p-value indicates a true effect?" and related  [ShinyApp](http://shinyapps.org/apps/PPV/). Schönbrodt's post led me to blog posts by [Daniel Lakens](http://daniellakens.blogspot.de/2015/09/how-can-p-005-lead-to-wrong-conclusions.html), “How can p = 0.05 lead to wrong conclusions 30% of the time with a 5% Type 1 error rate?” and [Will Gervais](http://willgervais.com/blog/2014/9/24/power-consequences), “Power Consequences”. The term *science-wise false discovery rate* is from [Leah Jager and Jeffrey Leek's paper](http://doi.org/10.1093/biostatistics/kxt007), "An estimate of the science-wise false discovery rate and application to the top medical literature". Earlier work includes [Sholom Wacholder et al's 2004 paper](https://academic.oup.com/jnci/article/96/6/434/2606750/) "Assessing the Probability That a Positive Report is False: An Approach for Molecular Epidemiology Studies" and [John Ioannidis’s 2005 paper](http://dx.plos.org/10.1371/journal.pmed.0020124), “Why most published research findings are false”.
 
 ## Installation and Usage
+
 The simplest way to get the software is to download the script [`swfdr.R`](https://github.com/natgoodman/swfdr/blob/master/R/swfdr.R) from the R subdirectory of the repository. The script uses base R capabilities only and will run "out of the box" on any (reasonably modern) R installation. 
 
 The recommended way to run the script is to `source` it into your R session and run the statement `run();`  as shown below.
@@ -103,9 +106,11 @@ The article discussing the results is available in [html](https://natgoodman.git
 
 Nathan (Nat) Goodman, (natg at shore.net)
 
-## Bugs and Caveats
+## Comments Please!
 
-Please report any bugs, other problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/swfdr/issues). I will be notified, and you'll be apprised of progress.
+Please post comments on [Twitter](https://twitter.com/gnatgoodman) or [Facebook](https://www.facebook.com/nathan.goodman.3367), or contact me by email [natg@shore.net](mailto:natg@shore.net). 
+
+Please report bugs, other software problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/swfdr/issues). I will be notified, and you'll be apprised of progress. As already noted, the software is still rough and software documentation nonexistent.
 
 ## Copyright & License
 

@@ -153,5 +153,7 @@ It's really just another consequence of "Publish or Perish".  Those who can, pub
 
 Good science drives the field forward; bad science is ephemeral. It's aggravating to see so much dreck get published, but it's even more aggravating to see good statisticians and data scientists agonizing over the ordure and spending so much effort trying to root out bad science. We will do more good by helping good scientists do good science than by trying to slow down the bad ones. Quoting the sage Oprah Winfrey ([from BrainyQuote](https://www.brainyquote.com/quotes/quotes/o/oprahwinfr163087.html)), "Be thankful for what you have; you'll end up having more. If you concentrate on what you don't have, you will never, ever have enough." 
 
+## Comments Please!
 
+Please post comments on [Twitter](https://twitter.com/gnatgoodman) or [Facebook](https://www.facebook.com/nathan.goodman.3367), or contact me by email [natg@shore.net](mailto:natg@shore.net).
 

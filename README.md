@@ -6,6 +6,8 @@ October 16, 2017
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 *An R script and short article exploring the statistical concept of science-wise false discovery rate (SWFDR). Some authors use SWFDR and its complement, positive predictive value, to argue that most (or, at least, many) published scientific results must be wrong unless most hypotheses are a priori true. I disagree. While SWFDR is valid statistically, the real cause of bad science is "Publish or Perish".*
 
+**THE SOFTWARE IS STILL ROUGH and SOFTWARE DOCUMENTATION NONEXISTENT. PLEASE GET IN TOUCH IF YOU NEED HELP**
+
 Overview
 --------
 
@@ -180,10 +182,12 @@ Author
 
 Nathan (Nat) Goodman, (natg at shore.net)
 
-Bugs and Caveats
+Comments Please!
 ----------------
 
-Please report any bugs, other problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/swfdr/issues). I will be notified, and you'll be apprised of progress.
+Please post comments on [Twitter](https://twitter.com/gnatgoodman) or [Facebook](https://www.facebook.com/nathan.goodman.3367), or contact me by email <natg@shore.net>.
+
+Please report bugs, other software problems, and feature requests using the [GitHub Issue Tracker](https://github.com/natgoodman/swfdr/issues). I will be notified, and you'll be apprised of progress. As already noted, the software is still rough and software documentation nonexistent.
 
 Copyright & License
 -------------------

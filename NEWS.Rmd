@@ -1,7 +1,7 @@
 ---
 title: "Revision history for swfdr repository"
 author: "Nathan (Nat) Goodman"
-date: "October 16, 2017"
+date: "January 28, 2019"
 output:
   github_document:
     html_preview: no
@@ -11,6 +11,8 @@ citecolor: green
 urlcolor: blue
 ---
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
+
+## Release 1.02 2019-01-28
 
 ## Release 1.01 2018-09-03
 
