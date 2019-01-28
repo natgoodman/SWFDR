@@ -14,6 +14,8 @@ urlcolor: blue
 
 ## Release 1.02 2019-01-28
 
+Added words on posting comments using social media
+
 ## Release 1.01 2018-09-03
 
 Added words on posting comments using GitHub Issue Tracker
